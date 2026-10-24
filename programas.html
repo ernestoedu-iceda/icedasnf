@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<title>Programas | ICEDA Sports and Fitness School</title>
+<meta name="description" content="Certificaciones y seminarios ICEDA: Personal & Fitness Coaching, Master Fitness Trainer, Coaching Nutricional, Pilates Reformer, Biomecánica y más. Fórmate como profesional del fitness.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --navy:#0A1A33;
+  --navy-2:#0F2547;
+  --navy-3:#16305C;
+  --red:#E3262E;
+  --red-dark:#B71C23;
+  --gold:#F5A623;
+  --white:#FFFFFF;
+  --off:#F5F7FA;
+  --grey:#8A94A6;
+  --ink:#101828;
+  --line:rgba(255,255,255,.12);
+  --line-dark:rgba(16,24,40,.10);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --radius:16px;
+  --shadow:0 20px 50px rgba(10,26,51,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,.display{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:1.05}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+section{position:relative}
+
+/* ============ REVEAL (con red de seguridad) ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.no-js .reveal{opacity:1;transform:none}
+
+/* ============ TOP BAR ============ */
+.topbar{background:var(--navy);color:#B9C4D6;font-size:.78rem;padding:8px 0}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.topbar a{color:#DDE5F0;transition:color .25s}
+.topbar a:hover{color:var(--white)}
+.topbar .socials{display:flex;gap:14px}
+.topbar .badges{display:flex;gap:18px;flex-wrap:wrap}
+.topbar .badges span::before{content:"✓";color:var(--gold);margin-right:6px;font-weight:700}
+@media(max-width:760px){.topbar .badges{display:none}}
+
+/* ============ NAV ============ */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-dark);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 6px 24px rgba(10,26,51,.10)}
+.nav .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.35rem;color:var(--navy);text-transform:uppercase}
+.brand-mark{width:54px;height:54px;object-fit:contain;flex:none;display:block;transition:transform .35s var(--ease)}
+.brand:hover .brand-mark{transform:scale(1.06) rotate(-2deg)}
+.hero-logo{width:clamp(140px,18vw,190px);height:auto;margin-bottom:26px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.45))}
+.foot-brand .brand-mark{width:60px;height:60px}
+.brand small{display:block;font-family:'Inter';font-weight:500;font-size:.6rem;letter-spacing:.18em;color:var(--grey)}
+.nav-links{display:flex;gap:28px;font-size:.92rem;font-weight:500}
+.nav-links a{position:relative;color:var(--ink);padding:6px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--red);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--red)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:.92rem;padding:13px 26px;border-radius:999px;transition:transform .25s var(--ease),box-shadow .25s,background .25s;cursor:pointer;border:none}
+.btn:active{transform:scale(.97)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 8px 20px rgba(227,38,46,.35)}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 12px 26px rgba(227,38,46,.42)}
+.btn-ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.4)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-3);transform:translateY(-2px)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--navy);margin:5px auto;transition:.3s}
+@media(max-width:960px){
+  .nav-links,.nav-cta .btn-navy{display:none}
+  .hamburger{display:block}
+}
+.mobile-menu{position:fixed;inset:0;background:var(--navy);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;transform:translateX(100%);transition:transform .45s var(--ease)}
+.mobile-menu.open{transform:none}
+.mobile-menu a{color:#fff;font-family:'Barlow Condensed';font-size:2rem;text-transform:uppercase;padding:8px 0;font-weight:700}
+.mobile-menu .close{position:absolute;top:24px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer}
+
+/* ============ HERO ============ */
+.hero{background:
+  radial-gradient(1200px 600px at 85% -10%, rgba(227,38,46,.28), transparent 60%),
+  radial-gradient(900px 500px at -10% 110%, rgba(245,166,35,.16), transparent 55%),
+  linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 55%,var(--navy-3) 100%);
+  color:#fff;padding:110px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(closest-side at 60% 40%,#000 30%,transparent 100%)}
+.hero .container{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.kicker::before{content:"";width:34px;height:2px;background:var(--gold)}
+.hero h1{font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:800;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:transparent;background:linear-gradient(90deg,var(--red) 0%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text}
+.hero .sub{font-size:1.08rem;color:#C6D0E0;max-width:520px;margin-bottom:34px;font-weight:300}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.hero-proof{display:flex;gap:34px;flex-wrap:wrap}
+.proof b{display:block;font-family:'Barlow Condensed';font-size:2.1rem;font-weight:800;color:#fff;line-height:1}
+.proof span{font-size:.8rem;color:#9FB0C8;letter-spacing:.04em}
+.hero-visual{position:relative}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:24px;padding:34px 30px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 30px 70px rgba(0,0,0,.35);transform:rotate(-1.2deg);transition:transform .5s var(--ease)}
+.hero-card:hover{transform:rotate(0) translateY(-4px)}
+.hero-card h3{font-size:1.4rem;color:#fff;margin-bottom:6px}
+.hero-card p{font-size:.86rem;color:#B9C4D6;margin-bottom:20px}
+.hero-card ul{list-style:none;display:grid;gap:12px}
+.hero-card li{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;color:#E4EAF3}
+.hero-card li::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--gold),var(--red));margin-top:2px;box-shadow:0 0 12px rgba(227,38,46,.5)}
+.hero-card .btn{width:100%;margin-top:24px}
+.floating-badge{position:absolute;top:-22px;right:-14px;background:var(--gold);color:var(--navy);font-family:'Barlow Condensed';font-weight:800;font-size:.95rem;text-transform:uppercase;padding:10px 18px;border-radius:12px;transform:rotate(4deg);box-shadow:0 12px 30px rgba(0,0,0,.35);animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:rotate(4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-8px)}}
+@media(max-width:960px){
+  .hero{padding:70px 0 60px}
+  .hero .container{grid-template-columns:1fr;gap:44px}
+}
+
+/* ============ MARQUEE ============ */
+.marquee{background:var(--red);color:#fff;padding:14px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:48px;animation:marquee 28s linear infinite;font-family:'Barlow Condensed';font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.08em}
+.marquee-track span{display:inline-flex;align-items:center;gap:48px}
+.marquee-track span::after{content:"★";color:var(--gold);font-size:.8rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ============ SECCIONES GENÉRICAS ============ */
+.section{padding:96px 0}
+.section-head{max-width:720px;margin:0 auto 56px;text-align:center}
+.section-head .kicker{justify-content:center}
+.section-head .kicker::after{content:"";width:34px;height:2px;background:var(--gold)}
+.section-head h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--navy);margin-bottom:14px}
+.section-head p{color:#5A6577;font-size:1.02rem}
+.dark .section-head h2{color:#fff}
+.dark .section-head p{color:#B9C4D6}
+
+/* ============ PROGRAMAS ============ */
+.programs{background:var(--off)}
+.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.pcard{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 18px rgba(10,26,51,.07);transition:transform .45s var(--ease),box-shadow .45s;display:flex;flex-direction:column;position:relative}
+.pcard:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.pcard-top{height:150px;position:relative;display:flex;align-items:flex-end;padding:20px;color:#fff}
+.pcard-top h3{font-size:1.5rem;position:relative;z-index:1;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.pcard-top::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:14px 14px;opacity:.5}
+.g1{background:linear-gradient(135deg,#12315F,#E3262E)}
+.g2{background:linear-gradient(135deg,#0A1A33,#F5A623)}
+.g3{background:linear-gradient(135deg,#B71C23,#0F2547)}
+.g4{background:linear-gradient(135deg,#16305C,#1FA97C)}
+.g5{background:linear-gradient(135deg,#5B2A86,#E3262E)}
+.g6{background:linear-gradient(135deg,#0A1A33,#2D9CDB)}
+.pcard-body{padding:26px 24px 28px;display:flex;flex-direction:column;flex:1}
+.pcard-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.pcard-body p{font-size:.92rem;color:#5A6577;flex:1;margin-bottom:20px}
+.pcard-meta{display:flex;gap:16px;font-size:.78rem;color:var(--grey);margin-bottom:20px;flex-wrap:wrap}
+.pcard-meta span::before{content:"•";color:var(--gold);margin-right:6px}
+.pcard .btn{align-self:flex-start;padding:11px 22px;font-size:.85rem}
+.popular::before{content:"MÁS POPULAR";position:absolute;top:14px;right:-34px;background:var(--gold);color:var(--navy);font-family:'Barlow Condensed';font-weight:800;font-size:.75rem;letter-spacing:.1em;padding:6px 40px;transform:rotate(38deg);z-index:2}
+@media(max-width:960px){.program-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.program-grid{grid-template-columns:1fr}}
+
+/* ============ MISIÓN ============ */
+.mission{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;text-align:center;overflow:hidden}
+.mission h2{font-size:clamp(2.2rem,4.6vw,3.6rem);max-width:900px;margin:0 auto 26px;font-weight:800}
+.mission h2 em{font-style:normal;color:var(--gold)}
+.mission p{max-width:640px;margin:0 auto 36px;color:#C6D0E0;font-weight:300}
+.avatars{display:flex;justify-content:center;margin-bottom:36px}
+.avatars i{width:52px;height:52px;border-radius:50%;border:3px solid var(--navy);margin-left:-14px;background:linear-gradient(135deg,var(--navy-3),var(--red));display:grid;place-items:center;font-style:normal;font-family:'Barlow Condensed';font-weight:700;color:#fff;font-size:.9rem}
+.avatars i:nth-child(2n){background:linear-gradient(135deg,var(--red),var(--gold))}
+.avatars i:nth-child(3n){background:linear-gradient(135deg,#1FA97C,var(--navy-3))}
+
+/* ============ POR QUÉ ICEDA ============ */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.wcard{background:#fff;border:1px solid var(--line-dark);border-radius:var(--radius);padding:36px 28px;text-align:center;transition:transform .4s var(--ease),box-shadow .4s}
+.wcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.wicon{width:72px;height:72px;margin:0 auto 22px;border-radius:20px;display:grid;place-items:center;font-size:1.9rem;background:linear-gradient(135deg,rgba(227,38,46,.1),rgba(245,166,35,.14));border:1px solid rgba(227,38,46,.18)}
+.wcard h3{font-size:1.35rem;color:var(--navy);margin-bottom:12px}
+.wcard p{font-size:.92rem;color:#5A6577}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr}}
+
+/* ============ TESTIMONIOS ============ */
+.testimonials{background:var(--off)}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.tcard{background:#fff;border-radius:var(--radius);padding:30px 26px;box-shadow:0 4px 18px rgba(10,26,51,.06);transition:transform .4s var(--ease)}
+.tcard:hover{transform:translateY(-6px)}
+.stars{color:var(--gold);letter-spacing:3px;margin-bottom:14px}
+.tcard p{font-size:.92rem;color:#3A4557;margin-bottom:20px}
+.tauthor{display:flex;align-items:center;gap:12px}
+.tauthor i{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy-3),var(--red));display:grid;place-items:center;font-style:normal;color:#fff;font-family:'Barlow Condensed';font-weight:700}
+.tauthor b{display:block;font-size:.9rem;color:var(--navy)}
+.tauthor span{font-size:.76rem;color:var(--grey)}
+@media(max-width:900px){.t-grid{grid-template-columns:1fr}}
+
+/* ============ FAQ ============ */
+.faq-list{max-width:780px;margin:0 auto}
+details{border-bottom:1px solid var(--line-dark);padding:4px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 4px;font-weight:600;font-size:1rem;color:var(--navy);transition:color .25s}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:'Barlow Condensed';font-size:1.7rem;color:var(--red);transition:transform .3s var(--ease);flex:none}
+details[open] summary::after{transform:rotate(45deg)}
+details[open] summary{color:var(--red)}
+details .answer{padding:0 4px 24px;color:#5A6577;font-size:.94rem;max-width:680px}
+
+/* ============ SEDES ============ */
+.locations,.staff,.instructores{background:linear-gradient(160deg,var(--navy-2),var(--navy))}
+.loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.lcard{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;color:#DDE5F0;transition:transform .4s var(--ease),background .4s}
+.lcard:hover{transform:translateY(-6px);background:rgba(255,255,255,.09)}
+.lcard .flag{font-size:1.8rem;margin-bottom:12px}
+.lcard h3{color:#fff;font-size:1.5rem;margin-bottom:14px}
+.lcard p{font-size:.88rem;margin-bottom:8px;color:#B9C4D6}
+.lcard a{color:var(--gold);font-weight:600}
+.lcard a:hover{text-decoration:underline}
+@media(max-width:900px){.loc-grid{grid-template-columns:1fr}}
+
+/* ============ CONTACTO ============ */
+.contact .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--navy);margin-bottom:18px}
+.contact .lead{color:#5A6577;margin-bottom:28px}
+.contact-info{display:grid;gap:14px;font-size:.94rem}
+.contact-info a{color:var(--red);font-weight:600}
+form{display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field label{font-size:.8rem;font-weight:600;color:var(--navy);letter-spacing:.03em}
+.field input,.field select,.field textarea{padding:14px 16px;border:1.5px solid var(--line-dark);border-radius:12px;font-family:inherit;font-size:.94rem;background:#fff;transition:border-color .25s,box-shadow .25s;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(227,38,46,.1)}
+textarea{resize:vertical;min-height:120px}
+.form-note{font-size:.78rem;color:var(--grey)}
+.form-ok{display:none;background:#E8F7EF;border:1px solid #1FA97C;color:#0E6B4C;border-radius:12px;padding:16px;font-size:.9rem}
+@media(max-width:900px){.contact .container{grid-template-columns:1fr}}
+
+/* ============ FOOTER ============ */
+footer{background:var(--navy);color:#9FB0C8;padding:70px 0 30px;font-size:.88rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.foot-grid h4{color:#fff;font-family:'Barlow Condensed';text-transform:uppercase;font-size:1.05rem;margin-bottom:16px;letter-spacing:.06em}
+.foot-grid a{display:block;padding:5px 0;transition:color .25s}
+.foot-grid a:hover{color:#fff}
+.foot-logo{width:168px;height:auto;display:block}
+.foot-brand p{margin-top:18px;max-width:280px;font-weight:300}
+.foot-social{display:flex;gap:12px;margin-top:20px}
+.foot-social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .25s,border-color .25s}
+.foot-social a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.78rem}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+
+/* ============ WHATSAPP FLOAT ============ */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:90;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.45);transition:transform .3s var(--ease)}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* ============ PÁGINA PROGRAMAS ============ */
+.page-hero{padding:80px 0 70px}
+.cert{display:grid;grid-template-columns:.9fr 1.4fr;gap:44px;align-items:stretch;margin-bottom:56px;background:#fff;border:1px solid var(--line-dark);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(10,26,51,.06);transition:transform .45s var(--ease),box-shadow .45s}
+.cert:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.cert-alt{grid-template-columns:1.4fr .9fr}
+.cert-alt .cert-media{order:2}
+.cert-media{position:relative;min-height:280px;display:flex;align-items:flex-end;padding:26px}
+.cert-media::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:14px 14px;opacity:.5}
+.cert-num{font-family:'Barlow Condensed';font-weight:800;font-size:6.5rem;line-height:1;color:rgba(255,255,255,.25);position:relative;z-index:1}
+.cert-flag{position:absolute;top:20px;left:20px;background:var(--gold);color:var(--navy);font-family:'Barlow Condensed';font-weight:800;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;padding:8px 16px;border-radius:10px;z-index:2;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.cert-body{padding:38px 38px 38px 0}
+.cert-alt .cert-body{padding:38px 0 38px 38px}
+.cert-body h3{font-size:clamp(1.7rem,3vw,2.3rem);color:var(--navy);margin:6px 0 14px}
+.cert-lead{color:#3A4557;font-size:1rem;margin-bottom:22px}
+.cert-reasons h4{font-family:'Inter';text-transform:none;font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.cert-reasons ul{list-style:none;display:grid;gap:12px;margin-bottom:26px}
+.cert-reasons li{position:relative;padding-left:28px;font-size:.93rem;color:#3A4557}
+.cert-reasons li::before{content:"✓";position:absolute;left:0;top:0;width:19px;height:19px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--gold));color:#fff;font-size:.68rem;font-weight:700;display:grid;place-items:center}
+.cert-reasons li b{color:var(--navy)}
+.cert-cta{display:flex;gap:12px;flex-wrap:wrap}
+.sem-grid{grid-template-columns:repeat(3,1fr)}
+.sem-grid .pcard-top{height:120px}
+@media(max-width:980px){
+  .cert,.cert-alt{grid-template-columns:1fr}
+  .cert-alt .cert-media{order:0}
+  .cert-media{min-height:160px}
+  .cert-body,.cert-alt .cert-body{padding:28px 24px 32px}
+  .sem-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){.sem-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="container">
+    <div class="badges">
+      <span>Presencia en 3 países</span>
+      <span>Formación teórico-práctica</span>
+      <span>Metodología propia ICEDA</span>
+    </div>
+    <div class="socials">
+      <a href="mailto:icedasportsandfitness@gmail.com">icedasportsandfitness@gmail.com</a>
+      <a href="tel:+50230932644">+502 3093 2644</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="img/logo-iceda-emblema.png" alt="ICEDA Sports and Fitness School" class="brand-mark" width="54" height="54">
+      <span>ICEDA<small>Sports &amp; Fitness School</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="programas.html">Programas</a>
+      <a href="metodologia.html">Metodología</a>
+      <a href="profesores.html">Profesores</a>
+      <a href="index.html#sedes">Sedes y Contacto</a>
+      <a href="index.html#instructores">Instructores Certificados</a>
+    </div>
+    <div class="nav-cta">
+      <a href="index.html#contacto" class="btn btn-navy">Contáctanos</a>
+      <a href="#certificaciones" class="btn btn-red">Inscríbete</a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="menuClose" aria-label="Cerrar menú">✕</button>
+  <a href="programas.html">Programas</a>
+  <a href="metodologia.html">Metodología</a>
+  <a href="profesores.html">Profesores</a>
+  <a href="index.html#sedes">Sedes y Contacto</a>
+  <a href="index.html#instructores">Instructores Certificados</a>
+</div>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="hero page-hero">
+  <div class="container">
+    <div style="max-width:760px">
+      <p class="kicker">Certificaciones y Seminarios ICEDA</p>
+      <h1>Elige la formación que va a <em>definir tu carrera</em></h1>
+      <p class="sub">Siete certificaciones profesionales y once seminarios de especialización. Cada programa combina ciencia aplicada, práctica supervisada y la metodología ICEDA que respalda a nuestros egresados en toda la región.</p>
+      <div class="hero-actions">
+        <a href="#certificaciones" class="btn btn-red">Ver certificaciones</a>
+        <a href="#seminarios" class="btn btn-ghost">Ver seminarios</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>7 Certificaciones</span><span>11 Seminarios</span><span>Práctica Supervisada</span><span>Metodología ICEDA</span><span>Guatemala</span><span>Panamá</span><span>Honduras</span>
+    <span>7 Certificaciones</span><span>11 Seminarios</span><span>Práctica Supervisada</span><span>Metodología ICEDA</span><span>Guatemala</span><span>Panamá</span><span>Honduras</span>
+  </div>
+</div>
+
+<!-- ============ CERTIFICACIONES ============ -->
+<section class="section" id="certificaciones">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker">Certificaciones profesionales</p>
+      <h2>Formaciones completas para ejercer con autoridad</h2>
+      <p>Programas profundos, con evaluación final y certificación ICEDA. Diseñados para convertirte en un profesional que programa con criterio, no con plantillas.</p>
+    </div>
+
+    <!-- Personal & Fitness Coaching -->
+    <article class="cert reveal" id="personal-fitness-coaching">
+      <div class="cert-media g1"><span class="cert-num">01</span><span class="cert-flag">★ Más vendido</span></div>
+      <div class="cert-body">
+        <span class="pcard-tag">Certificación insignia · La más vendida</span>
+        <h3>Personal &amp; Fitness Coaching</h3>
+        <p class="cert-lead">La puerta de entrada a una carrera real en el fitness. Este es el programa con el que más profesionales se han formado en ICEDA, y hay una razón: sales sabiendo evaluar, programar y acompañar a un cliente de principio a fin.</p>
+        <div class="cert-reasons">
+          <h4>Por qué dominarás el mercado con esta certificación</h4>
+          <ul>
+            <li><b>Programas con criterio científico.</b> Tipos de entrenamiento, sistemas energéticos y series efectivas por nivel: dejas de copiar rutinas y empiezas a diseñarlas.</li>
+            <li><b>Clientes reales desde el primer módulo.</b> Evaluación inicial, prescripción y seguimiento con casos prácticos supervisados.</li>
+            <li><b>El perfil más demandado.</b> Gimnasios, estudios y clientes particulares buscan coaches integrales que dominen entrenamiento y hábitos, no solo contadores de repeticiones.</li>
+            <li><b>Base para especializarte.</b> Es el cimiento perfecto para sumar después nutrición, biomecánica o cualquier seminario ICEDA.</li>
+          </ul>
+        </div>
+        <div class="cert-cta">
+          <a href="index.html#contacto" class="btn btn-red">Quiero esta certificación</a>
+          <a href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Personal%20%26%20Fitness%20Coaching" target="_blank" rel="noopener" class="btn btn-navy">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Master Fitness Trainer -->
+    <article class="cert cert-alt reveal" id="master-fitness-trainer">
+      <div class="cert-media g2"><span class="cert-num">02</span><span class="cert-flag">5 especializaciones en 1</span></div>
+      <div class="cert-body">
+        <span class="pcard-tag">Programa élite · 5 en 1</span>
+        <h3>Master Fitness Trainer</h3>
+        <p class="cert-lead">Para quienes no quieren ser una opción más, sino la referencia. El Master Fitness Trainer integra cinco especializaciones en un solo recorrido formativo: el perfil más completo que puede ofrecer un entrenador en la región.</p>
+        <div class="cert-reasons">
+          <h4>Por qué es la inversión más rentable en tu carrera</h4>
+          <ul>
+            <li><b>Cinco especializaciones, una sola formación.</b> Multiplicas tu campo de acción sin pagar cinco programas por separado.</li>
+            <li><b>Versatilidad = ingresos.</b> Puedes atender desde el cliente que inicia hasta el atleta exigente, y cobrar como especialista en cada caso.</li>
+            <li><b>Diferenciación inmediata.</b> En un mercado saturado de "entrenadores", un Master Trainer con formación integral se posiciona solo.</li>
+            <li><b>Visión completa del cliente.</b> Entiendes el entrenamiento como sistema: fuerza, acondicionamiento, movilidad, poblaciones especiales y coaching.</li>
+          </ul>
+        </div>
+        <div class="cert-cta">
+          <a href="index.html#contacto" class="btn btn-red">Quiero esta certificación</a>
+          <a href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Master%20Fitness%20Trainer" target="_blank" rel="noopener" class="btn btn-navy">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Coaching Nutricional -->
+    <article class="cert reveal" id="coaching-nutricional">
+      <div class="cert-media g3"><span class="cert-num">03</span></div>
+      <div class="cert-body">
+        <span class="pcard-tag">Nutrición aplicada</span>
+        <h3>Coaching Nutricional</h3>
+        <p class="cert-lead">El entrenamiento construye el estímulo; la nutrición decide el resultado. Aprende a guiar la alimentación de tus clientes con fundamentos sólidos, cálculo calórico y estrategias realistas adaptadas a los alimentos de nuestra región.</p>
+        <div class="cert-reasons">
+          <h4>Por qué esta certificación cambia tus resultados</h4>
+          <ul>
+            <li><b>Resuelves el 50% que el gimnasio no resuelve.</b> La mayoría de estancamientos de tus clientes no están en la rutina, están en el plato.</li>
+            <li><b>Cálculo y estructura, no modas.</b> Requerimientos energéticos, distribución de macronutrientes y planificación de comidas con base científica.</li>
+            <li><b>Adaptado a la vida real.</b> Planes que funcionan con los alimentos, presupuestos y costumbres de tus clientes, no dietas imposibles.</li>
+            <li><b>Un servicio adicional que puedes cobrar.</b> El acompañamiento nutricional es uno de los servicios más valorados y mejor pagados del coaching.</li>
+          </ul>
+        </div>
+        <div class="cert-cta">
+          <a href="index.html#contacto" class="btn btn-red">Quiero esta certificación</a>
+          <a href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Coaching%20Nutricional" target="_blank" rel="noopener" class="btn btn-navy">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Pilates Reformer -->
+    <article class="cert cert-alt reveal" id="pilates-reformer">
+      <div class="cert-media g5"><span class="cert-num">04</span></div>
+      <div class="cert-body">
+        <span class="pcard-tag">Método en expansión</span>
+        <h3>Pilates Reformer</h3>
+        <p class="cert-lead">El Pilates Reformer vive su mejor momento: los estudios crecen en toda la región y faltan instructores certificados que dominen el equipo con seguridad y técnica. Fórmate donde otros solo improvisan.</p>
+        <div class="cert-reasons">
+          <h4>Por qué certificarte ahora</h4>
+          <ul>
+            <li><b>Demanda en pleno crecimiento.</b> Los estudios de Reformer se multiplican y necesitan instructores formados, no aficionados.</li>
+            <li><b>Dominio real del equipo.</b> Ajustes, resortes, progresiones y regresiones para trabajar con todo tipo de alumnos con seguridad.</li>
+            <li><b>Un público que paga por calidad.</b> El cliente de Reformer valora la instrucción profesional y es de los más fieles del sector.</li>
+            <li><b>Complemento perfecto.</b> Ideal para entrenadores y fisioterapeutas que quieren sumar un servicio premium a su práctica.</li>
+          </ul>
+        </div>
+        <div class="cert-cta">
+          <a href="index.html#contacto" class="btn btn-red">Quiero esta certificación</a>
+          <a href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Pilates%20Reformer" target="_blank" rel="noopener" class="btn btn-navy">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Medicina Tradicional China -->
+    <article class="cert reveal" id="medicina-tradicional-china">
+      <div class="cert-media g6"><span class="cert-num">05</span></div>
+      <div class="cert-body">
+        <span class="pcard-tag">Bienestar integral</span>
+        <h3>Medicina Tradicional China</h3>
+        <p class="cert-lead">Amplía tu visión del cuerpo humano con un sistema milenario de comprensión de la salud. Una formación que integra los principios de la Medicina Tradicional China al mundo del bienestar y la recuperación deportiva.</p>
+        <div class="cert-reasons">
+          <h4>Por qué suma a tu perfil profesional</h4>
+          <ul>
+            <li><b>Un enfoque que te diferencia.</b> Muy pocos profesionales del fitness en la región manejan herramientas de la MTC con formación seria.</li>
+            <li><b>Base para técnicas de recuperación.</b> Es el fundamento ideal para seminarios como acupuntura zonal, cupping y descargas musculares.</li>
+            <li><b>Visión integral del cliente.</b> Comprende energía, recuperación y equilibrio más allá de la sala de pesas.</li>
+            <li><b>Mercado de bienestar en expansión.</b> Spas, centros holísticos y clientes particulares buscan cada vez más estos servicios.</li>
+          </ul>
+        </div>
+        <div class="cert-cta">
+          <a href="index.html#contacto" class="btn btn-red">Quiero esta certificación</a>
+          <a href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Medicina%20Tradicional%20China" target="_blank" rel="noopener" class="btn btn-navy">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Biomecánica de Pesas -->
+    <article class="cert cert-alt reveal" id="biomecanica-pesas">
+      <div class="cert-media g4"><span class="cert-num">06</span></div>
+      <div class="cert-body">
+        <span class="pcard-tag">Ciencia del movimiento</span>
+        <h3>Biomecánica de Pesas</h3>
+        <p class="cert-lead">La diferencia entre un entrenador promedio y un profesional respetado está en el detalle: entender por qué un ejercicio funciona, para quién y cómo ejecutarlo. Esta certificación te da ese nivel de análisis.</p>
+        <div class="cert-reasons">
+          <h4>Por qué te convierte en un entrenador de otro nivel</h4>
+          <ul>
+            <li><b>Seleccionas ejercicios con evidencia.</b> Análisis de activación muscular y palancas para elegir el mejor ejercicio para cada objetivo y cada cuerpo.</li>
+            <li><b>Previenes lesiones antes de que ocurran.</b> Identificas errores técnicos y compensaciones que otros ni siquiera ven.</li>
+            <li><b>Adaptas, no eliminas.</b> Cuando un movimiento causa molestia, sabes sustituirlo preservando el estímulo de entrenamiento.</li>
+            <li><b>Autoridad técnica instantánea.</b> Explicar el "porqué" de cada ejercicio te posiciona frente a clientes y colegas.</li>
+          </ul>
+        </div>
+        <div class="cert-cta">
+          <a href="index.html#contacto" class="btn btn-red">Quiero esta certificación</a>
+          <a href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Biomec%C3%A1nica%20de%20Pesas" target="_blank" rel="noopener" class="btn btn-navy">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Biomecánica de Corredores -->
+    <article class="cert reveal" id="biomecanica-corredores">
+      <div class="cert-media g1"><span class="cert-num">07</span></div>
+      <div class="cert-body">
+        <span class="pcard-tag">Running y rendimiento</span>
+        <h3>Biomecánica de Corredores</h3>
+        <p class="cert-lead">El running es el deporte masivo con más lesiones por sobreuso, y también con más corredores dispuestos a invertir en correr mejor. Conviértete en el especialista que analiza, corrige y potencia la técnica de carrera.</p>
+        <div class="cert-reasons">
+          <h4>Por qué es un nicho de oro</h4>
+          <ul>
+            <li><b>Comunidad enorme, especialistas escasos.</b> Miles de corredores populares y muy pocos profesionales capaces de analizar su técnica.</li>
+            <li><b>Del análisis a la corrección.</b> Pisada, cadencia, postura y patrones de movimiento: aprendes a evaluar y a intervenir.</li>
+            <li><b>Menos lesiones, mejores marcas.</b> Ayudas a tus corredores a rendir más gastando menos, el argumento de venta más poderoso que existe.</li>
+            <li><b>Servicios de alto valor.</b> Evaluaciones de técnica de carrera y planes correctivos son servicios premium con demanda constante.</li>
+          </ul>
+        </div>
+        <div class="cert-cta">
+          <a href="index.html#contacto" class="btn btn-red">Quiero esta certificación</a>
+          <a href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Biomec%C3%A1nica%20de%20Corredores" target="_blank" rel="noopener" class="btn btn-navy">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ SEMINARIOS ============ -->
+<section class="section programs" id="seminarios">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker">Seminarios de especialización</p>
+      <h2>Suma herramientas concretas a tu práctica</h2>
+      <p>Formaciones intensivas y prácticas para ampliar tus servicios, dominar nuevas disciplinas y diferenciarte. Perfectos como complemento de cualquier certificación ICEDA.</p>
+    </div>
+    <div class="program-grid sem-grid">
+      <article class="pcard reveal">
+        <div class="pcard-top g5"><h3>Pilates Mat</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Cuerpo y control</span>
+          <p>Domina el repertorio de Pilates en colchoneta: control, respiración y progresiones para dirigir clases grupales o sesiones individuales sin necesidad de equipo.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g1"><h3>Aeróbicos</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Clases grupales</span>
+          <p>Estructura, música y coreografía para dirigir clases de aeróbicos con energía y seguridad. La habilidad clásica que todo gimnasio sigue demandando.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g2"><h3>Steps</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Clases grupales</span>
+          <p>Aprende a construir clases de step dinámicas: técnica sobre la plataforma, combinaciones coreográficas y control de intensidad para todos los niveles.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g4"><h3>Functional Training</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Tendencia global</span>
+          <p>Diseña sesiones funcionales con propósito: patrones de movimiento, circuitos y progresiones que trasladan la fuerza del gimnasio a la vida y al deporte.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g3"><h3>Kettlebell</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Fuerza y potencia</span>
+          <p>Swing, clean, snatch y turkish get-up con técnica impecable. La herramienta más versátil de la sala, dominada con criterio y seguridad.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g6"><h3>Farmacología en el Deporte</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Conocimiento crítico</span>
+          <p>Comprende cómo actúan las sustancias más comunes en el ámbito deportivo, sus riesgos y sus implicaciones, para orientar a tus clientes con información seria y responsable.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g2"><h3>Entrenamiento con Bandas Elásticas</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Versatilidad total</span>
+          <p>Resistencia variable aplicada: fuerza, rehabilitación y entrenamiento en casa o en exteriores con el equipo más accesible y portátil que existe.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g5"><h3>Acupuntura Zonal</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Recuperación</span>
+          <p>Introducción práctica a la estimulación de zonas y puntos aplicada al bienestar y la recuperación, con base en los principios de la Medicina Tradicional China.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g1"><h3>Kinesiotaping</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Soporte y prevención</span>
+          <p>Técnicas de vendaje neuromuscular para acompañar el entrenamiento: aplicaciones para soporte articular, activación y manejo de molestias comunes.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g6"><h3>Cupping</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Terapia manual</span>
+          <p>La terapia con ventosas aplicada al deportista: fundamentos, técnicas de aplicación y criterios de uso para incorporarla como servicio de recuperación.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <div class="pcard-top g4"><h3>Descargas Musculares</h3></div>
+        <div class="pcard-body">
+          <span class="pcard-tag">Recuperación</span>
+          <p>Técnicas manuales de descarga para ayudar a tus atletas y clientes a recuperar mejor entre sesiones: el servicio complementario que fideliza.</p>
+          <a href="index.html#contacto" class="btn btn-red">Más información</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="section mission dark">
+  <div class="container reveal">
+    <h2>Tu carrera no espera. <em>Fórmate con ICEDA.</em></h2>
+    <p>Cuéntanos cuál programa te interesa y un asesor te compartirá fechas de inicio, modalidades y planes de pago disponibles en tu país.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a href="index.html#contacto" class="btn btn-red">Hablar con un asesor</a>
+      <a href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20de%20ICEDA" target="_blank" rel="noopener" class="btn btn-ghost">Escríbenos por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand" style="color:#fff">
+          <img src="img/logo-iceda-blanco.png" alt="ICEDA Sports and Fitness School" class="foot-logo" width="620" height="693">
+        </a>
+        <p>Llevando salud y bienestar a la región a través de la educación, la ciencia del entrenamiento y la comunidad.</p>
+        <div class="foot-social">
+          <a href="https://www.youtube.com/@ICEDASportsFitnessSchool" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+          <a href="https://www.instagram.com/iceda_fitness/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+          <a href="https://www.facebook.com/ICEDA.Sports.and.Fitness" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        </div>
+      </div>
+      <div>
+        <h4>Certificaciones</h4>
+        <a href="#personal-fitness-coaching">Personal &amp; Fitness Coaching</a>
+        <a href="#master-fitness-trainer">Master Fitness Trainer</a>
+        <a href="#coaching-nutricional">Coaching Nutricional</a>
+        <a href="#pilates-reformer">Pilates Reformer</a>
+        <a href="#biomecanica-pesas">Biomecánica de Pesas</a>
+      </div>
+      <div>
+        <h4>Escuela</h4>
+        <a href="metodologia.html">Metodología</a>
+        <a href="profesores.html">Profesores</a>
+        <a href="index.html#sedes">Sedes y Contacto</a>
+        <a href="index.html#instructores">Instructores Certificados</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="mailto:icedasportsandfitness@gmail.com">Escríbenos</a>
+        <a href="tel:+50230932644">Guatemala</a>
+        <a href="tel:+50767971021">Panamá</a>
+        <a href="tel:+50494423788">Honduras</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ICEDA Sports and Fitness School. Todos los derechos reservados.</span>
+      <span><a href="#">Política de Privacidad</a> · <a href="#">Política de Reembolso</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<a class="wa-float" href="https://wa.me/50230932644?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20de%20ICEDA" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2-2-4.4-2-6.8C3.1 8.9 8.9 3.1 16 3.1S28.9 8.9 28.9 16 23.1 28.5 16 28.5zm7.1-9.5c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
+<script>
+(function(){
+"use strict";
+function safe(fn,name){try{fn()}catch(e){console.warn("[ICEDA] "+name+" falló:",e)}}
+
+safe(function(){
+  var nav=document.getElementById("nav");
+  window.addEventListener("scroll",function(){
+    nav.classList.toggle("scrolled",window.scrollY>10);
+  },{passive:true});
+},"nav");
+
+safe(function(){
+  var menu=document.getElementById("mobileMenu");
+  document.getElementById("hamburger").addEventListener("click",function(){menu.classList.add("open")});
+  document.getElementById("menuClose").addEventListener("click",function(){menu.classList.remove("open")});
+  menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){menu.classList.remove("open")})});
+},"menuMovil");
+
+safe(function(){
+  var els=document.querySelectorAll(".reveal");
+  if(!("IntersectionObserver" in window)){els.forEach(function(el){el.classList.add("in")});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}
+    });
+  },{threshold:0.05,rootMargin:"0px 0px -5% 0px"});
+  els.forEach(function(el,i){el.style.transitionDelay=(i%3)*0.08+"s";io.observe(el)});
+  setTimeout(function(){els.forEach(function(el){el.classList.add("in")})},6000);
+},"reveals");
+})();
+</script>
+</body>
+</html>
